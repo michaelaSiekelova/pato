@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 public class UserPostDto{
-    @JsonProperty("surname")
+    @JsonProperty("firstname")
     private String firstname;
     @JsonProperty("lastname")
     private String lastname;
@@ -16,4 +16,23 @@ public class UserPostDto{
     private String email;
     @JsonProperty("password")
     private String password;
+    private String keycloakId;
+
+    public String createRequestBody(){
+        return "{" +
+                "\"username\": \""+email+"\"," +
+                "\"email\": \""+email+"\"," +
+                "\"enabled\": true," +
+                "\"emailVerified\": false," +
+                "\"firstName\": \""+firstname+"\"," +
+                "\"lastName\": \""+lastname+"\"," +
+                "\"credentials\": [" +
+                " {" +
+                "\"type\": \"password\"," +
+                "\"value\": \""+password+"\"," +
+                "\"temporary\": false" +
+                "}" +
+                "]" +
+                "}";
+    }
 }

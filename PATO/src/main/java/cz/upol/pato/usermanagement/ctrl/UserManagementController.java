@@ -28,8 +28,9 @@ public class UserManagementController {
     @Autowired
     private KeyCloakService keyCloakService;
 
-    @GetMapping(path = "user/email/{email}")
-    public UserGetDto getUserByEmail(String email){
+
+    @GetMapping(path = "user/email")
+    public UserGetDto getUserByEmail(@RequestParam(name="email") String email){
         return mapstructMapper.userToUserGetDto(userService.getUserByEmail(email));
     }
 
@@ -37,9 +38,8 @@ public class UserManagementController {
     public void createUser(@RequestParam(name="email") String email, @RequestParam(name="password") String password,
                            @RequestParam(name="firstname") String firstname,@RequestParam(name="lastname")  String lastname){
         log.info("calling createUser");
-        UserPostDto newUser = new UserPostDto(firstname, lastname, email, password);
-        keyCloakService.createUser(newUser);
-        userService.createUser(newUser);
+
+        userService.createUser(email,password,firstname,lastname);
     }
 
     @GetMapping(path = "user/test")

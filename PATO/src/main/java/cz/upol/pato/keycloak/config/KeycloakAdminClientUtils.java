@@ -1,11 +1,12 @@
 package cz.upol.pato.keycloak.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.OAuth2Constants;
+import org.keycloak.admin.client.KeycloakBuilder;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +56,7 @@ public class KeycloakAdminClientUtils {
 
     }
 
-    public static Keycloak getKeycloakClient(KeycloakSecurityContext session, KeycloakAdminClientConfig config) {
+    public static Keycloak getKeycloakClient(RefreshableKeycloakSecurityContext session, KeycloakAdminClientConfig config) {
 
         return KeycloakBuilder.builder() //
                 .serverUrl(config.getServerUrl()) //

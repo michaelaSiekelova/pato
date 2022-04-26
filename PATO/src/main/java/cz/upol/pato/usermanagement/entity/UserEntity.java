@@ -1,9 +1,12 @@
 package cz.upol.pato.usermanagement.entity;
 
+import cz.upol.pato.projectmanagement.entity.Project;
+import cz.upol.pato.ticketmanagement.entity.Ticket;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -12,22 +15,30 @@ public class UserEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "ID")
     private long id;
 
     @Basic
-    @Column(name = "FIRST_NAME")
+    private String keycloakId;
+
+    @Basic
     private String firstname;
 
     @Basic
-    @Column(name = "LAST_NAME")
     private String lastname;
 
     @Basic
-    @Column(name = "EMAIL")
     private String email;
 
     @Basic
-    @Column(name = "PASSWORD")
     private String password;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<Project> projects;
+
+    //Tickets where this user is current user
+    @OneToMany(mappedBy="currentUser", fetch=FetchType.LAZY)
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy="createUser", fetch=FetchType.LAZY)
+    private List<Ticket> createdTickets;
 }

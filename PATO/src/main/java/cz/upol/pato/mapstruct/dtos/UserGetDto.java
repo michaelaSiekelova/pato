@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class UserGetDto {
     @JsonProperty("id")
     private Long id;
-    @JsonProperty("surname")
-    private String surname;
+    @JsonProperty("firstname")
+    private String firstname;
     @JsonProperty("lastname")
     private String lastname;
     @JsonProperty("email")
