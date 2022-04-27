@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OAuthService, NullValidationHandler, AuthConfig } from 'angular-oauth2-oidc';
+import { KeycloakService } from './keycloak.service';
 
 @Component({
   selector: 'app-root',
@@ -9,35 +10,14 @@ import { OAuthService, NullValidationHandler, AuthConfig } from 'angular-oauth2-
 export class AppComponent {
   title = 'pato-ui';
 
-  constructor(private oauthService: OAuthService) {
-    this.configure();
+  constructor(private oauthService: KeycloakService) {
   }
 
-  authConfig: AuthConfig = {
-    issuer: 'http://localhost:8180/auth/realms/pato',
-    redirectUri: window.location.origin + "/Users",
-    clientId: 'angular-springboot',
-    scope: 'openid profile email',
-    responseType: 'code',
-    // at_hash is not present in JWT token
-    disableAtHashCheck: true,
-    showDebugInformation: true
-  }
-    
-  public login() {
-    this.oauthService.initLoginFlow();
-  }
-    
-  public logoff() {
-    this.oauthService.logOut();
+  public login(){
+    this.oauthService.login();
   }
 
-  public getUserId(){
-  }
-  
-  private configure() {
-    this.oauthService.configure(this.authConfig);
-    this.oauthService.tokenValidationHandler = new  NullValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  public logoff(){
+    this.oauthService.logoff();
   }
 }

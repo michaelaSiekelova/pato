@@ -40,6 +40,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from '@angular/material/card';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { KeycloakService } from './keycloak.service';
 
 @NgModule({
   declarations: [

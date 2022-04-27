@@ -1,5 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { ProjectLightDto } from 'src/dtos';
+import { KeycloakService } from '../keycloak.service';
 import { UsersOverviewRestService } from './users-overview-rest.service';
 
 @Component({
@@ -11,13 +14,17 @@ export class UsersOverviewComponent implements OnInit {
 
   projects: ProjectLightDto[] = [];
   
+  
 
-  constructor(private userOverviewService: UsersOverviewRestService) {
+  constructor(private userOverviewService: UsersOverviewRestService, private auth: KeycloakService) {
     console.log('calling constructor')
    }
 
   ngOnInit(): void {
-    console.log('calling oninit')
+    console.log('calling oninit');
+    const token = this.auth.getAuthToken();
+    console.log(token);
+    const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
     this.userOverviewService.getUserProjectsIds().subscribe((response: ProjectLightDto[])=> {                           //next() callback
       console.log('response received')
       this.projects = response; 
