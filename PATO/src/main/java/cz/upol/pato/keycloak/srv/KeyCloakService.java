@@ -14,6 +14,7 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -37,10 +38,14 @@ public class KeyCloakService {
 
 
     public String getCurrentUserId(){
+        Authentication auth = SecurityContextHolder.getContext()
+                .getAuthentication();
+        log.info(auth.getName());
+        log.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         @SuppressWarnings("unchecked")
         KeycloakPrincipal<RefreshableKeycloakSecurityContext> principal = (KeycloakPrincipal<RefreshableKeycloakSecurityContext>) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        return principal.getKeycloakSecurityContext().getToken().getId();
+        return principal.getName();
     }
 /*
     public Response createUser(UserPostDto newUserDto){

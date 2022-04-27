@@ -1,1 +1,15 @@
-<p>main-menu works!</p>
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" >
+      <!--<img src="assets/images/PATO-icon-2.png" width="50px">-->
+      <button mat-button routerLink="/MyProfile">My profile</button>
+      <button mat-button routerLink="/Projects">Projects</button>
+      <button mat-button routerLink="/Tickets">Tickets</button>
+      <button mat-button routerLink="/Users">Users</button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+

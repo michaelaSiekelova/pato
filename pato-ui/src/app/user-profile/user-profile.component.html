@@ -1,1 +1,23 @@
-<p>user-profile works!</p>
+<mat-card>
+    <mat-card-title>User basic info</mat-card-title>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-grid-list cols="4" rowHeight="4:1">
+        <mat-grid-tile>
+            <h2 >Name</h2>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p >Value</p>
+        </mat-grid-tile>
+        <mat-divider [vertical]="true" [inset]="true"></mat-divider>
+        <mat-grid-tile>
+            <h2 >Email</h2>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p >Value</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+<app-tickets-table></app-tickets-table>
+<app-projects-table></app-projects-table>
+<app-permisions-table></app-permisions-table>
+<app-change-password></app-change-password>

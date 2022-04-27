@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class TicketGetLightDto {
-    @JsonProperty("name")
+    @JsonProperty("id")
     private long id;
     @JsonProperty("name")
     private String name;

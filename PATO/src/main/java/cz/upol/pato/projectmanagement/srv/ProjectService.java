@@ -7,6 +7,7 @@ import cz.upol.pato.usermanagement.srv.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +28,12 @@ public class ProjectService {
 
     public List<Project> getProjectsForCurrentUser(){
         UserEntity user = userService.getCurrentUser();
-        return user.getProjects();
+        List<Project> projects = user.getProjects();
+        if (projects==null || projects.isEmpty()){
+            return new ArrayList<>();
+        }else {
+            return projects;
+        }
     }
 
     public Project getProjectById(long projectId){

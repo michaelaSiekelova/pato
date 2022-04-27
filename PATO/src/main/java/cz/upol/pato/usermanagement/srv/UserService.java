@@ -59,6 +59,7 @@ public class UserService {
 
     public UserEntity getCurrentUser(){
         String keycloakId = keyCloakService.getCurrentUserId();
+        log.info("Current User keycloak Id: " + keycloakId);
         return repository.findByKeycloakId(keycloakId);
     }
 

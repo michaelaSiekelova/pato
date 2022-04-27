@@ -28,7 +28,7 @@ public class TicketManagementController {
     @GetMapping(path = "user/ticketsForUser")
     public List<TicketGetLightDto> getTicketsForUser(){
         List<TicketGetLightDto> resultlist = new ArrayList<>();
-        List<Ticket> entityList = ticketService.getTicketsByCurrentUser(1L);
+        List<Ticket> entityList = ticketService.getTicketsByCurrentUser();
         for (Ticket ticket:entityList
              ) {
             resultlist.add(mapstructMapper.ticketToTicketGetLightDto(ticket));

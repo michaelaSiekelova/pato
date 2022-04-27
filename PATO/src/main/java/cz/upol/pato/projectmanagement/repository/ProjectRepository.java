@@ -4,6 +4,7 @@ import cz.upol.pato.projectmanagement.entity.Project;
 import cz.upol.pato.ticketmanagement.entity.Ticket;
 import cz.upol.pato.usermanagement.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

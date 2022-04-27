@@ -22,6 +22,24 @@ import { AttachmentsTableComponent } from './attachments-table/attachments-table
 import { CommentsTableComponent } from './comments-table/comments-table.component';
 import { HistoryTableComponent } from './history-table/history-table.component';
 import { WorkflowTableComponent } from './workflow-table/workflow-table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatDialogModule} from "@angular/material/dialog";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCardModule} from '@angular/material/card';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -48,7 +66,31 @@ import { WorkflowTableComponent } from './workflow-table/workflow-table.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatTableModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCardModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+          allowedUrls: ['http://localhost:8080/api'],
+          sendAccessToken: true
+        }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
