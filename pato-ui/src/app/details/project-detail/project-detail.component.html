@@ -1,0 +1,77 @@
+
+<div class="button-container">
+    <button mat-icon-button (click)="backToOverview()" aria-label="Back to overview">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+</div>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{project.shortcut}} - {{project.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Base info
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="base-info-columns">
+            <mat-list>
+                <mat-list-item> Create user </mat-list-item>
+                <mat-list-item> Create date </mat-list-item>
+                <mat-list-item> Deadline </mat-list-item>
+            </mat-list>
+            <mat-list>
+                <mat-list-item> {{project.createUser}} </mat-list-item>
+                <mat-list-item> {{project.createDate | date:'short':'IST' }} </mat-list-item>
+                <mat-list-item> {{project.deadline | date:'short':'IST' }} 
+                    <button mat-icon-button (click)="openDeadlineWindow()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Attributes
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-attributes-table [projectId]="projectId"></app-attributes-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Users
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-users-table [projectId]="projectId" [usersInProject]="true"></app-users-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Tickets
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-tickets-table [projectId]="projectId" [forProject]="true"></app-tickets-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Gantt chart
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-gant-chart [projectId]="projectId" ></app-gant-chart>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+

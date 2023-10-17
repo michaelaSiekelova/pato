@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Update ticket description</h1>
+<div mat-dialog-content [formGroup]="form">
+    <mat-form-field >
+        <mat-label>Decsription</mat-label>
+        <textarea matInput formControlName="description" ></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Cancel</button>
+  <button mat-button cdkFocusInitial (click)="saveDialog()">Save</button>
+</div>

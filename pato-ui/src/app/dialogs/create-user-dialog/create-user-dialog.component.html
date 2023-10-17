@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Create user</h1>
+<div mat-dialog-content [formGroup]="form">
+
+      <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+          Maximum length is 25 characters.
+      </mat-error>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Not a valid email.
+      </mat-error>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Cancel</button>
+  <button mat-button cdkFocusInitial (click)="saveDialog()">Save</button>
+</div>
+

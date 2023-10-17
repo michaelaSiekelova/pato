@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Create attribute value</h1>
+<div mat-dialog-content [formGroup]="form">
+
+        <mat-form-field >
+            <mat-label>Attribute</mat-label>
+            <mat-select formControlName="attribute" (selectionChange)="onSelectionChange()">
+            <mat-option *ngFor="let attribute of attributes" [value]="attribute">
+                {{attribute.name}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Text attribute value</mat-label>
+          <input matInput formControlName="stringValue">
+        </mat-form-field>
+
+
+        <mat-form-field >
+          <mat-label>Date attribute value</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateValue">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field disabled>
+          <mat-label>Number attribute value</mat-label>
+          <input matInput formControlName="numberValue">
+        </mat-form-field>
+        
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Cancel</button>
+  <button mat-button cdkFocusInitial (click)="saveDialog()">Save</button>
+</div>

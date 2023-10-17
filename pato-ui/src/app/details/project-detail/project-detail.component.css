@@ -1,0 +1,4 @@
+.base-info-columns { 
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}

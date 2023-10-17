@@ -1,0 +1,51 @@
+<div class="button-container">
+    <button mat-icon-button (click)="backToOverview()" aria-label="Back to overview">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+</div>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{user.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Base info
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="base-info-columns">
+            <mat-list >
+                <mat-list-item> Name </mat-list-item>
+            </mat-list>
+            <mat-list >
+                <mat-list-item> {{user.name}} </mat-list-item>
+            </mat-list>
+            <mat-list>
+                <mat-list-item> Email </mat-list-item>
+            </mat-list>
+            <mat-list>
+                <mat-list-item> {{user.email}} </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Tickets
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-tickets-table [userEmail]="user.email" [forOtherUser]="true"></app-tickets-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Projects
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-projects-table></app-projects-table>
+    </mat-expansion-panel>
+</mat-accordion>

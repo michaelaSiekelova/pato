@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Create ticket</h1>
+<div mat-dialog-content [formGroup]="form">
+
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+          Maximum length is 50 characters.
+      </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field >
+        <mat-label>Project</mat-label>
+        <mat-select formControlName="projectId" >
+          <mat-option *ngFor="let project of projects" [value]="project.id">
+            {{project.shortcut}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field >
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" >
+          <mat-option *ngFor="let ticketType of ticketTypes" [value]="ticketType">
+            {{ticketType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Deadline</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="deadline">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+    
+  <mat-form-field >
+    <mat-label>Decsription</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Cancel</button>
+  <button mat-button cdkFocusInitial (click)="saveDialog()">Save</button>
+</div>

@@ -1,0 +1,105 @@
+
+<div class="button-container">
+    <button mat-icon-button (click)="backToOverview()" aria-label="Back to overview">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+</div>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ticket.key}} - {{ticket.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Base info
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="base-info-columns">
+            <mat-list >
+                <mat-list-item> Project name </mat-list-item>
+                <mat-list-item> Type </mat-list-item>
+                <mat-list-item> Create user </mat-list-item>
+                <mat-list-item> Current user </mat-list-item>
+            </mat-list>
+            <mat-list >
+                <mat-list-item> {{ticket.projectShortcut}} </mat-list-item>
+                <mat-list-item> {{ticket.type}} </mat-list-item>
+                <mat-list-item> {{ticket.createUser}} </mat-list-item>
+                <mat-list-item> 
+                    {{ticket.assignee}} 
+                    <button mat-icon-button (click)="openAssigneeDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+            </mat-list>
+            <mat-list>
+                <mat-list-item> Create date </mat-list-item>
+                <mat-list-item> Deadline </mat-list-item>
+                <mat-list-item> Start date</mat-list-item>
+                <mat-list-item> End date </mat-list-item>
+            </mat-list>
+            <mat-list>
+                <mat-list-item> {{ticket.createDate | date:'short':'IST' }} </mat-list-item>
+                <mat-list-item> 
+                    {{ticket.deadline | date:'short':'IST' }} 
+                    <button mat-icon-button (click)="openDeadlineWindow()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+                <mat-list-item> 
+                    {{ticket.startDate | date:'short':'IST' }}
+                    <button mat-icon-button (click)="openStartDateWindow()">
+                        <mat-icon>edit</mat-icon>
+                    </button> 
+                </mat-list-item>
+                <mat-list-item> 
+                    {{ticket.endDate | date:'short':'IST' }} 
+                    <button mat-icon-button (click)="openEndDateWindow()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <button mat-icon-button (click)="openUpdateDescritionDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <mat-panel-description>
+                Description
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-card >
+            <mat-card-content>
+              {{ticket.description}}
+            </mat-card-content>
+          </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Attribute values
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-attribute-values-table [ticketId]="ticket.id" [projectId]="ticket.projectId"></app-attribute-values-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<mat-accordion >
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Tasks
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-tasks-table  [ticketId]="ticket.id"></app-tasks-table>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>

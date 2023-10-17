@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Create attribute</h1>
+<div mat-dialog-content [formGroup]="form">
+
+        <mat-form-field >
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type" >
+            <mat-option *ngFor="let type of types" [value]="type">
+                {{type}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Cancel</button>
+  <button mat-button cdkFocusInitial (click)="saveDialog()">Save</button>
+</div>
+

@@ -1,0 +1,13 @@
+<button mat-icon-button (click)="openCreateWindow()"  aria-label="Create">
+    <mat-icon>add</mat-icon>
+</button>
+<ul>
+    <li *ngFor="let task of tasks">
+        <mat-checkbox [(ngModel)]="task.done" (change)="taskChange(task)">
+            <button mat-icon-button (click)="deleteItem(task)"  aria-label="DeleteTask">
+                <mat-icon>delete</mat-icon>
+            </button>
+            {{task.description}}
+        </mat-checkbox>
+    </li>
+</ul>
